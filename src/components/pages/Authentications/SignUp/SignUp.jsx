@@ -3,13 +3,24 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import signUp from '../../../../assets/others/authentication2.png';
 
 const SignUp = () => {
+
+    const handleRegistration = e => {
+        e.preventDefault();
+        const name = form.name.value;
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(password, email, name)
+        // captcha not done
+    }
+
     return (
         <div className="loginBg h-full py-32">
             <div className=' loginBg w-[1700px] h-[950px] mx-auto drop-shadow-2xl flex items-center'>
                 <div className='w-1/2'>
                     <div className='w-[536px] mx-auto'>
                         <h1 className='text-center text-6xl text-slate-800 font-bold my-10'>Sign Up</h1>
-                        <form>
+                        <form onSubmit={handleRegistration}>
                             <div>
                                 <label>
                                     <span className='text-2xl font-bold text-slate-600 '>Name</span>

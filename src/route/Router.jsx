@@ -6,6 +6,7 @@ import Shop from "../components/pages/OurShop/Shop/Shop";
 import Authentication from "../components/Layouts/Authentication/Authentication";
 import Login from "../components/pages/Authentications/Login/Login";
 import SignUp from "../components/pages/Authentications/SignUp/SignUp";
+import Contact from "../components/pages/ContactUs/Contact/Contact";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: 'order/:category',
                 element: <Shop />
+            },
+            {
+                path: 'contact',
+                element: <Contact />
             }
         ]
     },

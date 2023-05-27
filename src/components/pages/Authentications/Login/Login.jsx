@@ -5,6 +5,17 @@ import './Login.css';
 
 
 const Login = () => {
+
+    const handleLogin = e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const message = form.message.value;
+        console.log(password, email, message)
+        // captcha not done
+    }
+
     return (
         <div className="loginBg h-full py-32">
             <div className=' loginBg w-[1700px] h-[950px] mx-auto drop-shadow-2xl flex items-center'>
@@ -14,7 +25,7 @@ const Login = () => {
                 <div className='w-1/2'>
                     <div className='w-[536px] mx-auto'>
                         <h1 className='text-center text-6xl text-slate-800 font-bold my-10'>Login</h1>
-                        <form>
+                        <form onSubmit={handleLogin}>
                             <div>
                                 <label>
                                     <span className='text-2xl font-bold text-slate-600 '>Email</span>
@@ -34,7 +45,7 @@ const Login = () => {
                                 <p className='text-blue-500 text-2xl font-bold '>reload captcha</p>
                             </div>
                             <div>
-                                <input className='w-[536px] h-[72px] bg-white ps-5 text-2xl text-slate-950 my-5' type="text" placeholder='Type Here' name="message" id="message" required />
+                                <textarea className='w-[536px] h-[72px] bg-white ps-5 text-2xl text-slate-950 my-5' type="text" placeholder='Type Here' name="message" id="message" required />
                             </div>
                             <input className='w-[536px] h-[72px] bg-orange-300 ps-5 text-2xl my-5 rounded-lg text-white font-bold ' type="submit" value="Sign in" />
                         </form>
