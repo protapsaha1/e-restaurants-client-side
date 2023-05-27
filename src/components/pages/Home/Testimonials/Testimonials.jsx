@@ -11,7 +11,7 @@ import { BsEarbuds } from "react-icons/bs";
 const Testimonials = () => {
     const [testimonials, setTestimonials] = useState([])
     useEffect(() => {
-        fetch("/public/reviews.json")
+        fetch("http://localhost:5011/reviews")
             .then(res => res.json())
             .then(data => setTestimonials(data))
     }, [])

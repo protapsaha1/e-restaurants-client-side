@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import fea from '../../../../assets/home/featured.jpg';
 import SectionHeading from '../../../ReuseCompo/SectionHeading/SectionHeading';
 import './Featured.css';
@@ -24,11 +25,13 @@ const Featured = () => {
                             alias perspiciatis et libero incidunt deserunt aut necessitatibus ipsabr <br />
                             debitis numquam porro aperiam assumenda, nihil voluptas placeat temporibus tenetur iure?
                         </p>
-                        <button className="border-b-4 border-white text-2xl font-semibold
+                        <Link to="/menu">
+                            <button className="border-b-4 border-white text-2xl font-semibold
                           text-white bg-transparent rounded-lg my-10  
                            uppercase w-[174px] h-[64px] hover:border-x-2 hover:border-t-2">
-                            Read more
-                        </button>
+                                Read more
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

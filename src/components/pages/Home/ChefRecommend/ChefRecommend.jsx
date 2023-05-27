@@ -5,7 +5,7 @@ import RecommendItems from "../RecommendItems/RecommendItems";
 const ChefRecommend = () => {
     const [recommends, setRecommends] = useState([]);
     useEffect(() => {
-        fetch('/public/menu.json')
+        fetch('http://localhost:5011/menu')
             .then(res => res.json())
             .then(data => {
                 setRecommends(data)

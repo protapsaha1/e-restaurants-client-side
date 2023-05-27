@@ -4,7 +4,7 @@ const useMenu = () => {
     const [menu, setMenus] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('/public/menu.json')
+        fetch('http://localhost:5011/menu')
             .then(res => res.json())
             .then(data => {
                 setLoading(false)

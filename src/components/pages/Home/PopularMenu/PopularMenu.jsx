@@ -23,7 +23,7 @@ const PopularMenu = () => {
                     ></PopularItems>)
                 }
             </div>
-            <Link to="/order"><button
+            <Link to="/order/salad"><button
                 className="border-b-4 border-black text-2xl font-semibold
             text-black hover:bg-slate-100 rounded-lg my-10 mx-[550px]
             uppercase w-[236px] h-[64px]"
