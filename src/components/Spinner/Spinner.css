@@ -1,0 +1,38 @@
+.spinner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333333;
+    /* transition: opacity 0.75s, visibility 0.75s; */
+}
+
+/* .spinner--hidden {
+    opacity: 0;
+    visibility: hidden;
+} */
+
+.spinner::after {
+    content: "";
+    width: 5rem;
+    height: 5rem;
+    border: .5rem solid #dddddd;
+    border-top-color: #a72222;
+    border-bottom-color: rgb(33, 143, 239);
+    border-radius: 50%;
+    animation: spinner 0.75s ease infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}

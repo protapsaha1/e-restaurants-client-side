@@ -1,45 +1,50 @@
 import { Link } from "react-router-dom";
 import ActiveLink from "../../../ActiveLink/ActiveLink";
 import { FaUserCircle } from "react-icons/fa";
+import { useContext } from "react";
+import { UserAuthentication } from "../../../ContextUser/UserProvider";
+import Swal from "sweetalert2";
 
 const Header = () => {
+    const { logOutUser, user } = useContext(UserAuthentication);
+
+    const handleLogOut = () => {
+        logOutUser()
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successfully',
+                })
+            })
+            .catch(() => { })
+    }
+    // hover:border-t-2 hover:border-r-2 hover:border-l-2 
+    // hover:border-t-green-500 hover:border-r-rose-700 
+    // hover:border-l-sky-700 hover:text-orange-400
+    // hover:border-orange-400 border-b-4 border-white 
+
+
     const routeOptions = <>
-        <ActiveLink to="/"><li className="mx-2 border-b-4
-         border-white text-2xl font-semibold text-white
-         bg-transparent rounded-lg my-10 uppercase px-3 py-2
-         hover:border-t-2 hover:border-r-2 hover:border-l-2 
-         hover:border-t-green-500 hover:border-r-rose-700 
-         hover:border-l-sky-700 hover:text-orange-400
-       hover:border-orange-400"
-        >Home</li></ActiveLink>
-        <ActiveLink to="/contact"><li className="mx-2 border-b-4
-         border-white text-2xl font-semibold text-white
-         bg-transparent rounded-lg my-10 uppercase px-3 py-2
-         hover:border-t-2 hover:border-r-2 hover:border-l-2 
-         hover:border-t-green-500 hover:border-r-rose-700 
-         hover:border-l-sky-700 hover:text-orange-400
-       hover:border-orange-400">Contacts Us</li></ActiveLink>
-        <ActiveLink to="/dashboard"><li className="mx-2 border-b-4
-         border-white text-2xl font-semibold text-white
-         bg-transparent rounded-lg my-10 uppercase px-3 py-2
-         hover:border-t-2 hover:border-r-2 hover:border-l-2 
-         hover:border-t-green-500 hover:border-r-rose-700 
-         hover:border-l-sky-700 hover:text-orange-400
-       hover:border-orange-400">DashBoard</li></ActiveLink>
-        <ActiveLink to="/menu"><li className="mx-2 border-b-4
-         border-white text-2xl font-semibold text-white
-         bg-transparent rounded-lg my-10 uppercase px-3 py-2
-         hover:border-t-2 hover:border-r-2 hover:border-l-2 
-         hover:border-t-green-500 hover:border-r-rose-700 
-         hover:border-l-sky-700 hover:text-orange-400
-       hover:border-orange-400">Our Menu</li></ActiveLink>
-        <ActiveLink to="/order/salad"><li className="mx-2 border-b-4
-         border-white text-2xl font-semibold text-white
-         bg-transparent rounded-lg my-10 uppercase px-3 py-2
-         hover:border-t-2 hover:border-r-2 hover:border-l-2 
-         hover:border-t-green-500 hover:border-r-rose-700 
-         hover:border-l-sky-700 hover:text-orange-400
-       hover:border-orange-400">Order Now</li></ActiveLink>
+
+        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500"> <ActiveLink to="home">Home</ActiveLink></li>
+
+        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500"><ActiveLink to="/contact">Contacts Us</ActiveLink></li>
+
+        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500"> <ActiveLink to="/dashboard">DashBoard</ActiveLink></li>
+
+        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500"><ActiveLink to="/menu">Our Menu</ActiveLink></li>
+
+        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500"><ActiveLink to="/order/salad">Order Now</ActiveLink></li>
+        {
+            !user &&
+            <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+            px-3 py-2 hover:text-orange-500"><ActiveLink to="/login">Login</ActiveLink></li>
+        }
     </>
     return (
         <>
@@ -64,13 +69,21 @@ const Header = () => {
                         </ul>
                     </div>
                     <div className="navbar-end ms-40 flex items-center">
-                        <button className="
-                         text-2xl text-white font-bold
-                        shadow-2xl hover:text-orange-500
+                        {user ?
+                            <button onClick={handleLogOut} className="
+                            text-2xl font-semibold text-white 
+                            my-10 uppercase hover:text-orange-500
                         "
-                        >SignOut
-                        </button>
-                        <FaUserCircle className="w-12 h-12 ms-3" />
+                            >SignOut
+                            </button>
+                            :
+                            ""
+                        }
+                        {
+                            user ?
+                                <img className="w-16 h-16 rounded-full ms-3" src={user?.photoURL} alt="" />
+                                :
+                                <FaUserCircle className="w-16 h-16 " />}
                     </div>
                 </div>
             </div>

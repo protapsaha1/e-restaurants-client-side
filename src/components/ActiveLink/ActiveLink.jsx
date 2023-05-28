@@ -4,8 +4,10 @@ const ActiveLink = ({ to, children }) => {
     return (
         <div>
             <NavLink to={to} className={({ isActive }) =>
-                isActive ?
-                    "border-b-8 mb-10 border-sky-400"
+
+                isActive
+                    ?
+                    "border-b-4 border-b-red-500 mb-5"
                     :
                     ""
             }>

@@ -55,7 +55,7 @@ const ContactForm = () => {
                 </div>
                 <button className=
                     'text-2xl font-semibold w-[220px] h-[56px] mx-[450px] mt-36 text-white bg-gradient-to-r from-orange-300 from-5% via-orange-700 via-60% to-slate-600 to-90% flex items-center justify-center'
-                >send message <FaTelegramPlane className='text-white w-8 h-8 ms-3' />
+                >Send message <FaTelegramPlane className='text-white w-8 h-8 ms-3' />
                 </button>
             </form>
         </div>

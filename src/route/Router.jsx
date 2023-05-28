@@ -7,19 +7,26 @@ import Authentication from "../components/Layouts/Authentication/Authentication"
 import Login from "../components/pages/Authentications/Login/Login";
 import SignUp from "../components/pages/Authentications/SignUp/SignUp";
 import Contact from "../components/pages/ContactUs/Contact/Contact";
+import PrivateRoute from "../components/UserAccessOnly/PrivateRoute";
+// import EntryLogin from "../components/EntryPage/EntryLogin";
+// import Spinner from "../components/Spinner/Spinner";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
         children: [
+            // {
+            //     path: '/',
+            //     element: <EntryLogin />
+            // },
             {
-                path: '/',
+                path: 'home',
                 element: <Home />
             },
             {
                 path: 'menu',
-                element: <Menu />
+                element: <PrivateRoute><Menu /></PrivateRoute>
             },
             {
                 path: 'order/:category',
@@ -43,6 +50,10 @@ const router = createBrowserRouter([
                 path: 'registration',
                 element: <SignUp />
             }
+            // {
+            //     path: 'spinner',
+            //     element: <Spinner />
+            // }
         ]
     }
 ]);
