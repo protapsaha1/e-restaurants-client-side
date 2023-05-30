@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import ActiveLink from "../../../ActiveLink/ActiveLink";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaCartPlus } from "react-icons/fa";
 import { useContext } from "react";
 import { UserAuthentication } from "../../../ContextUser/UserProvider";
 import Swal from "sweetalert2";
+import useCart from "../../../CustomHook/useMenu/useCart";
 
 const Header = () => {
     const { logOutUser, user } = useContext(UserAuthentication);
+    const [cart] = useCart();
 
     const handleLogOut = () => {
         logOutUser()
@@ -26,25 +28,31 @@ const Header = () => {
 
     const routeOptions = <>
 
-        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
         px-3 py-2 hover:text-orange-500"> <ActiveLink to="home">Home</ActiveLink></li>
 
-        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
         px-3 py-2 hover:text-orange-500"><ActiveLink to="/contact">Contacts Us</ActiveLink></li>
 
-        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
         px-3 py-2 hover:text-orange-500"> <ActiveLink to="/dashboard">DashBoard</ActiveLink></li>
 
-        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
         px-3 py-2 hover:text-orange-500"><ActiveLink to="/menu">Our Menu</ActiveLink></li>
 
-        <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
         px-3 py-2 hover:text-orange-500"><ActiveLink to="/order/salad">Order Now</ActiveLink></li>
         {
             !user &&
-            <li className="mx-2 text-2xl font-semibold text-white my-10 uppercase
+            <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
             px-3 py-2 hover:text-orange-500"><ActiveLink to="/login">Login</ActiveLink></li>
         }
+        <li>
+            <Link className="relative my-10 " to="/home">
+                <FaCartPlus className="w-10 h-10 text-red-500" />
+                <div className="text-xl bg-pink-600 rounded-2xl px-4 py-1 inline-flex absolute top-0 left-16 text-white ">+{cart?.length || 0}</div>
+            </Link>
+        </li>
     </>
     return (
         <>
