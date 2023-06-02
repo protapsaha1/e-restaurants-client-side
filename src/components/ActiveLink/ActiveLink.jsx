@@ -7,7 +7,7 @@ const ActiveLink = ({ to, children }) => {
 
                 isActive
                     ?
-                    "border-b-4 border-b-red-500"
+                    "border-b-4 border-b-red-600"
                     :
                     ""
             }>

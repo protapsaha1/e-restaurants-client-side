@@ -3,7 +3,7 @@ import Card from "../../../ReuseCompo/Card/Card";
 import { UserAuthentication } from "../../../ContextUser/UserProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
-import useCart from "../../../CustomHook/useMenu/useCart";
+import useCart from "../../../CustomHook/useCart/useCart";
 
 const RecommendItems = ({ recommend }) => {
     const { user } = useContext(UserAuthentication);

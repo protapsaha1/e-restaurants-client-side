@@ -4,7 +4,7 @@ import { FaUserCircle, FaCartPlus } from "react-icons/fa";
 import { useContext } from "react";
 import { UserAuthentication } from "../../../ContextUser/UserProvider";
 import Swal from "sweetalert2";
-import useCart from "../../../CustomHook/useMenu/useCart";
+import useCart from "../../../CustomHook/useCart/useCart";
 
 const Header = () => {
     const { logOutUser, user } = useContext(UserAuthentication);
@@ -28,27 +28,27 @@ const Header = () => {
 
     const routeOptions = <>
 
-        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
-        px-3 py-2 hover:text-orange-500"> <ActiveLink to="home">Home</ActiveLink></li>
+        <li className="mr-1 text-3xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500 hover:border-b-4 hover:border-b-gray-400"><ActiveLink to="/">Home</ActiveLink></li>
 
-        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
-        px-3 py-2 hover:text-orange-500"><ActiveLink to="/contact">Contacts Us</ActiveLink></li>
+        <li className="mr-1 text-3xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500 hover:border-b-4 hover:border-b-gray-400"><ActiveLink to="/contact">Contacts Us</ActiveLink></li>
 
-        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
-        px-3 py-2 hover:text-orange-500"> <ActiveLink to="/dashboard">DashBoard</ActiveLink></li>
+        <li className="mr-1 text-3xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500 hover:border-b-4 hover:border-b-gray-400"> <ActiveLink to="/dashboard/user-home">DashBoard</ActiveLink></li>
 
-        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
-        px-3 py-2 hover:text-orange-500"><ActiveLink to="/menu">Our Menu</ActiveLink></li>
+        <li className="mr-1 text-3xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500 hover:border-b-4 hover:border-b-gray-400"><ActiveLink to="/menu">Our Menu</ActiveLink></li>
 
-        <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
-        px-3 py-2 hover:text-orange-500"><ActiveLink to="/order/salad">Order Now</ActiveLink></li>
+        <li className="mr-1 text-3xl font-semibold text-white my-10 uppercase
+        px-3 py-2 hover:text-orange-500 hover:border-b-4 hover:border-b-gray-400"><ActiveLink to="/order/salad">Order Now</ActiveLink></li>
         {
             !user &&
-            <li className="mr-1 text-2xl font-semibold text-white my-10 uppercase
-            px-3 py-2 hover:text-orange-500"><ActiveLink to="/login">Login</ActiveLink></li>
+            <li className="mr-1 text-3xl font-semibold text-white my-10 uppercase
+            px-3 py-2 hover:text-orange-500 hover:border-b-4 hover:border-b-gray-400"><Link to="/login">Login</Link></li>
         }
         <li>
-            <Link className="relative my-10 " to="/home">
+            <Link className="relative my-10 " to="/dashboard/my-cart">
                 <FaCartPlus className="w-10 h-10 text-red-500" />
                 <div className="text-xl bg-pink-600 rounded-2xl px-4 py-1 inline-flex absolute top-0 left-16 text-white ">+{cart?.length || 0}</div>
             </Link>
@@ -79,7 +79,7 @@ const Header = () => {
                     <div className="navbar-end ms-40 flex items-center">
                         {user ?
                             <button onClick={handleLogOut} className="
-                            text-2xl font-semibold text-white 
+                            text-3xl font-semibold text-white 
                             my-10 uppercase hover:text-orange-500
                         "
                             >SignOut

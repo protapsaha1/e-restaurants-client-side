@@ -2,20 +2,39 @@ import { useContext } from "react";
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
 import { UserAuthentication } from "../../../ContextUser/UserProvider";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const SocialLogin = () => {
     const { googleLogin, githubLogin, facebookLogin, } = useContext(UserAuthentication);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+
+
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-                console.log(result.user)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login with Google Successfully',
-                    timer: 1500
+                const loggedUser = result.user;
+                console.log(result.user.displayName, result.user.email, result.user.photoURL)
+                const usersData = { name: loggedUser.displayName, email: loggedUser.email, UserPhoto: loggedUser.photoURL }
+                fetch('http://localhost:5011/users', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(usersData)
                 })
-
+                    .then(res => res.json())
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Login with Google Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => {
                 console.log(error.message)
@@ -24,12 +43,28 @@ const SocialLogin = () => {
     const handleGithubLogin = () => {
         githubLogin()
             .then(result => {
+                const loggedUser = result.user;
                 console.log(result.user)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login Github Successfully',
-                    timer: 1500
+                const usersData = { name: loggedUser.displayName, email: loggedUser.email, UserPhoto: loggedUser.photoURL }
+                fetch('http://localhost:5011/users', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(usersData)
                 })
+                    .then(res => res.json())
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Login with Google Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, { replace: true })
+
+
+                    })
             })
             .catch(error => {
                 console.log(error.message)
@@ -38,12 +73,26 @@ const SocialLogin = () => {
     const handleFacebookLogin = () => {
         facebookLogin()
             .then(result => {
+                const loggedUser = result.user;
                 console.log(result.user)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login Facebook Successfully',
-                    timer: 1500
+                const usersData = { name: loggedUser.displayName, email: loggedUser.email, UserPhoto: loggedUser.photoURL }
+                fetch('http://localhost:5011/users', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(usersData)
                 })
+                    .then(res => res.json())
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Login with Google Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => {
                 console.log(error.message)

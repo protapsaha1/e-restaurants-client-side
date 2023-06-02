@@ -21,6 +21,7 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
+        const usersData = { name: name, email: email, UserPhoto: photo }
         console.log(password, email, name, photo)
 
         if (password.length >= 6 || password.length <= 20) {
@@ -34,21 +35,39 @@ const SignUp = () => {
                 updateUser(name, photo)
                     .then(result => {
                         console.log(result.user)
+                        // send users data in mongo
+                        fetch('http://localhost:5011/users', {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json"
+                            },
+                            body: JSON.stringify(usersData)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                                if (data.insertedId) {
+                                    form.reset();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Sign up Successfully'
+                                    })
+
+                                    navigate('/')
+                                }
+                            })
+
+
                     })
                     .catch(error => {
                         console.log(error.message)
                     })
-                form.reset();
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sign up Successfully'
-                })
 
-                navigate('/home')
             })
             .catch(error => {
                 console.log(error.message)
             })
+
 
 
 
