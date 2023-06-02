@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import SectionHeading from "../../../../ReuseCompo/SectionHeading/SectionHeading";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
@@ -39,10 +39,31 @@ const AllUsers = () => {
 
             }
         })
+    };
+
+    const handleIsAdmin = user => {
+        console.log(user)
+        fetch(`http://localhost:5011/users/admin/${user._id}`, {
+            method: "PATCH"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        icon: 'success',
+                        title: `${user.name} is an Admin Now`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+
     }
 
     return (
-        <div>
+        <div className="w-full mt-60">
             <Helmet>
                 <title>All Users || Red Gold Restaurants</title>
             </Helmet>
@@ -77,10 +98,17 @@ const AllUsers = () => {
                                     </th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    <td></td>
                                     <td>
-                                        <button className="bg-red-700 p-5 rounded-lg" onClick={() => handleDelete(user._id)}>
-                                            <FaTrashAlt className="w-7 h-7 text-white" />
+                                        {user.role === 'admin' ? 'admin' :
+                                            <button className="bg-orange-400 btn btn-square w-20 h-20 hover:bg-orange-500" onClick={() => handleIsAdmin(user)}>
+                                                <FaUserShield className="w-8 h-8 text-white" />
+                                            </button>
+
+                                        }
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-square bg-red-700 w-20 h-20 hover:bg-red-600" onClick={() => handleDelete(user._id)}>
+                                            <FaTrashAlt className="w-8 h-8 text-white" />
                                         </button>
                                     </td>
                                 </tr>
@@ -91,7 +119,7 @@ const AllUsers = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
