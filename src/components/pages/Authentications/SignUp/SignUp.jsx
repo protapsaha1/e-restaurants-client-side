@@ -1,14 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import signUp from '../../../../assets/others/authentication2.png';
-import { useContext, useState } from "react";
-import { UserAuthentication } from "../../../ContextUser/UserProvider";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import useContexts from "../../../CustomHook/useContext/useContexts";
 
 const SignUp = () => {
-    const { createUser, updateUser } = useContext(UserAuthentication);
+    const { createUser, updateUser } = useContexts();
     const [show, setShow] = useState(false);
     const [error, setError] = useState("")
     const navigate = useNavigate();

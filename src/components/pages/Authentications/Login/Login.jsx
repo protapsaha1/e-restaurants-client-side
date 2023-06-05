@@ -3,15 +3,15 @@ import login from '../../../../assets/others/authentication2.png';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Login.css';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useContext, useEffect, useState } from 'react';
-import { UserAuthentication } from '../../../ContextUser/UserProvider';
+import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
+import useContexts from '../../../CustomHook/useContext/useContexts';
 
 
 const Login = () => {
-    const { signInUser } = useContext(UserAuthentication);
+    const { signInUser } = useContexts();
     const [disabled, setDisabled] = useState(true);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();

@@ -5,8 +5,8 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const MyCarts = () => {
-    const [cart, refetch] = useCart();
-    const total = cart.reduce((sum, item) => item.price + sum, 0);
+    const { cart, refetch } = useCart();
+    const total = cart.reduce((sum, item) => parseInt(item.price) + sum, 0);
     const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',

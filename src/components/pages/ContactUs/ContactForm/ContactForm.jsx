@@ -1,6 +1,5 @@
-import captcha from '../../../../assets/icon/captcha.png';
 import { FaTelegramPlane } from "react-icons/fa";
-
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
 
@@ -11,6 +10,14 @@ const ContactForm = () => {
         const email = form.email.value;
         const message = form.message.value;
         console.log(name, email, message)
+    }
+
+    // function onChange(value) {
+    //     console.log("Captcha value:", value);
+    // }
+
+    const handleReCaptcha = value => {
+        console.log("Captcha value:", value);
     }
 
     return (
@@ -46,12 +53,16 @@ const ContactForm = () => {
                     <br />
                     <textarea className='w-full h-[300px] bg-white p-5 text-2xl text-slate-950 my-5 ' type="text" placeholder='Write your Message Here' name="message" id="message" required />
                 </div>
-                <div className="w-[394px] h-[78px] bg-white shadow-slate-100 flex items-center">
-                    <input className="mx-4 w-6 h-6 bg-white" type="checkbox" name="captcha" id="captcha" />
+                <div>
+                    {/* <input className="mx-4 w-6 h-6 bg-white" type="checkbox" name="captcha" id="captcha" />
                     <label>
                         <span className="text-lg text-slate-900">I,m not robot</span>
                     </label>
-                    <img className='w-28 h-16 ms-28' src={captcha} alt="" />
+                    <img className='w-28 h-16 ms-28' src={captcha} alt="" /> */}
+                    <ReCAPTCHA
+                        sitekey="6LfXFW0mAAAAACvQfz80LgABOU84mKKuFojuTWFC"
+                        onChange={handleReCaptcha}
+                    />
                 </div>
                 <button className=
                     'text-2xl font-semibold w-[220px] h-[56px] mx-[450px] mt-36 text-white bg-gradient-to-r from-orange-300 from-5% via-orange-700 via-60% to-slate-600 to-90% flex items-center justify-center'

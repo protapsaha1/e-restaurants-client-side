@@ -1,11 +1,17 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaShoppingCart, FaWallet, FaCalendarAlt, FaBars, FaShoppingBag, FaEnvelope, FaListUl, FaBook, FaUsers, FaStarHalfAlt } from 'react-icons/fa'
 import { GiForkKnifeSpoon } from 'react-icons/gi'
+import useAdmin from "../../CustomHook/useAdmin/useAdmin";
+import useCart from "../../CustomHook/useCart/useCart";
 
 
 const DashBoard = () => {
     // TODO
-    const isAdmin = true;
+    // const isAdmin = true;
+    const { isAdmin } = useAdmin();
+    console.log(isAdmin)
+    const { cart } = useCart();
+
     return (
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -33,7 +39,7 @@ const DashBoard = () => {
                                 <li><NavLink to="/dashboard/reservation" className="flex items-center font-serif text-2xl font-bold text-black"><FaCalendarAlt className="w-9 h-9" /> Reservation</NavLink></li>
                                 <li><NavLink to="/dashboard/pay-history" className="flex items-center font-serif text-2xl font-bold text-black"><FaWallet className="w-9 h-9" /> Payment History</NavLink></li>
                                 <li><NavLink to="/dashboard/review" className="flex items-center font-serif text-2xl font-bold text-black"><FaStarHalfAlt className="w-9 h-9" />Add Reviews</NavLink></li>
-                                <li><NavLink to="/dashboard/my-cart" className="flex items-center font-serif text-2xl font-bold text-black"><FaShoppingCart className="w-9 h-9" /> My Cart</NavLink></li>
+                                <li><NavLink to="/dashboard/my-cart" className="flex items-center font-serif text-2xl font-bold text-black"><FaShoppingCart className="w-9 h-9" /> My Cart <span className="bg-pink-600 text-white rounded-lg px-3 py-2 ms-48 text-3xl">{cart.length}</span></NavLink></li>
                             </>
                     }
 

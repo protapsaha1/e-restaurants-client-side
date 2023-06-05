@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
-import { UserAuthentication } from "../../../ContextUser/UserProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useContexts from "../../../CustomHook/useContext/useContexts";
 
 
 const SocialLogin = () => {
-    const { googleLogin, githubLogin, facebookLogin, } = useContext(UserAuthentication);
+    const { googleLogin, githubLogin, facebookLogin, } = useContexts();
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';

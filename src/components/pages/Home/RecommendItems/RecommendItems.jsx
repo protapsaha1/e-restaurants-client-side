@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import Card from "../../../ReuseCompo/Card/Card";
-import { UserAuthentication } from "../../../ContextUser/UserProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../../CustomHook/useCart/useCart";
+import useContexts from "../../../CustomHook/useContext/useContexts";
 
 const RecommendItems = ({ recommend }) => {
-    const { user } = useContext(UserAuthentication);
+    const { user } = useContexts();
     const navigate = useNavigate();
     const location = useLocation();
-    const [, refetch] = useCart();
+    const { refetch } = useCart();
     const { image, recipe, name, price, _id } = recommend;
     const handleCart = item => {
         const cartItem = { menuId: _id, name, price, image, email: user.email }

@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import ActiveLink from "../../../ActiveLink/ActiveLink";
 import { FaUserCircle, FaCartPlus } from "react-icons/fa";
-import { useContext } from "react";
-import { UserAuthentication } from "../../../ContextUser/UserProvider";
 import Swal from "sweetalert2";
 import useCart from "../../../CustomHook/useCart/useCart";
+import useContexts from "../../../CustomHook/useContext/useContexts";
 
 const Header = () => {
-    const { logOutUser, user } = useContext(UserAuthentication);
-    const [cart] = useCart();
+    const { logOutUser, user } = useContexts();
+    console.log(user)
+    const { cart } = useCart();
 
     const handleLogOut = () => {
         logOutUser()

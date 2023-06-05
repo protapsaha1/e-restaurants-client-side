@@ -3,11 +3,13 @@ import SectionHeading from "../../../../ReuseCompo/SectionHeading/SectionHeading
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../CustomHook/useAxiosSecure/useAxiosSecure";
 
 const AllUsers = () => {
+    const { axiosSecure } = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5011/users')
-        return res.json()
+        const res = await axiosSecure.get('/users')
+        return res.data;
     })
 
     const handleDelete = id => {
@@ -61,13 +63,13 @@ const AllUsers = () => {
             })
 
     }
-
+    // document.cookie.
     return (
         <div className="w-full mt-60">
             <Helmet>
                 <title>All Users || Red Gold Restaurants</title>
             </Helmet>
-            <div className="mt-60">
+            <div className="mt-60 mb-20">
                 <SectionHeading
                     subHeading="Web users"
                     heading="Manage all users"
