@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Soup = () => {
     const [menu] = useMenu();
-    const soups = menu.filter(item => item.category === 'soup');
+    const soups = menu.filter(item => item.category === 'Soup');
     return (
         <div>
             <BannerSec

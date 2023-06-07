@@ -10,9 +10,8 @@ const RecommendItems = ({ recommend }) => {
     const location = useLocation();
     const { refetch } = useCart();
     const { image, recipe, name, price, _id } = recommend;
-    const handleCart = item => {
+    const handleCart = () => {
         const cartItem = { menuId: _id, name, price, image, email: user.email }
-        console.log(item)
         if (user && user.email) {
             fetch('http://localhost:5011/carts', {
                 method: "POST",
@@ -26,14 +25,12 @@ const RecommendItems = ({ recommend }) => {
                     if (data.insertedId) {
                         refetch();
                         Swal.fire({
-                            // position: 'top-end',
                             icon: 'success',
                             title: 'successfully added to the cart',
                             showConfirmButton: false,
                             timer: 1500
                         })
                     }
-                    console.log(data)
                 })
         }
         else {

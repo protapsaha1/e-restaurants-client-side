@@ -9,16 +9,16 @@ import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 
 const Shop = () => {
-    const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks']
+    const categories = ['Salad', 'Pizza', 'Soup', 'Dessert', 'Drinks']
     const { category } = useParams();
     const initialIndex = categories.indexOf(category)
     const [tabIndex, setIndex] = useState(initialIndex);
     const [menu] = useMenu();
-    const salads = menu.filter(item => item.category === 'salad');
-    const pizzas = menu.filter(item => item.category === 'pizza');
-    const soups = menu.filter(item => item.category === 'soup');
-    const desserts = menu.filter(item => item.category === 'dessert');
-    const drinks = menu.filter(item => item.category === 'drinks');
+    const salads = menu.filter(item => item.category === 'Salad');
+    const pizzas = menu.filter(item => item.category === 'Pizza');
+    const soups = menu.filter(item => item.category === 'Soup');
+    const desserts = menu.filter(item => item.category === 'Dessert');
+    const drinks = menu.filter(item => item.category === 'Drinks');
     return (
         <div className="bg-white">
             <Helmet>

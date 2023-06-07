@@ -51,7 +51,7 @@ const MyCarts = () => {
             <div className=" w-[1800px] h-[975px] mx-auto bg-[#ffffff] p-36" >
                 <div className="pb-10 flex justify-between items-center">
                     <h3 className="text-4xl font-bold font-serif">Total Items: {cart.length}</h3>
-                    <h3 className="text-4xl font-bold font-serif">Total Price: {total}</h3>
+                    <h3 className="text-4xl font-bold font-serif">Total Price: {Math.round(total)}</h3>
                     <button className="btn uppercase bg-orange-300 text-2xl font-serif text-slate-900">
                         pay
                     </button>

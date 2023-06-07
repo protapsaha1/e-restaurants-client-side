@@ -7,7 +7,6 @@ import useContexts from "../../../CustomHook/useContext/useContexts";
 
 const Header = () => {
     const { logOutUser, user } = useContexts();
-    console.log(user)
     const { cart } = useCart();
 
     const handleLogOut = () => {
@@ -15,16 +14,11 @@ const Header = () => {
             .then(() => {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Login Successfully',
+                    title: 'Log Out Successfully',
                 })
             })
             .catch(() => { })
-    }
-    // hover:border-t-2 hover:border-r-2 hover:border-l-2 
-    // hover:border-t-green-500 hover:border-r-rose-700 
-    // hover:border-l-sky-700 hover:text-orange-400
-    // hover:border-orange-400 border-b-4 border-white 
-
+    };
 
     const routeOptions = <>
 

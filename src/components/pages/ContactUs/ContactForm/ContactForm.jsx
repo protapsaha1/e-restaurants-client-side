@@ -23,20 +23,20 @@ const ContactForm = () => {
     return (
         <div className="h-[1070px] bg-[#F3F3F3] px-28" >
             <form onSubmit={handleContact}>
-                <div className="grid grid-cols-2 gap-4  pt-10">
+                <div className="grid grid-cols-2 gap-6  pt-10">
                     <div>
                         <label>
                             <span className='text-2xl font-bold text-slate-600 '>Name <span className="text-sky-500 text-2xl ">*</span></span>
                         </label>
                         <br />
-                        <input className='w-[536px] h-[72px] bg-white ps-5 text-2xl text-slate-950 my-5' type="password" placeholder='Enter Your Password' name="password" id="password" required />
+                        <input className='w-full h-[72px] bg-white ps-5 text-2xl text-slate-950 my-5' type="password" placeholder='Enter Your Password' name="password" id="password" required />
                     </div>
                     <div>
                         <label>
                             <span className='text-2xl font-bold text-slate-600 '>Email <span className="text-sky-500 text-2xl ">*</span></span>
                         </label>
                         <br />
-                        <input className='w-[536px] h-[72px] bg-white ps-5 text-2xl text-slate-950 my-5' type="email" placeholder='Enter Your Email' name="email" id="email" required />
+                        <input className='w-full h-[72px] bg-white ps-5 text-2xl text-slate-950 my-5' type="email" placeholder='Enter Your Email' name="email" id="email" required />
                     </div>
                 </div>
                 <div>

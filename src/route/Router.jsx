@@ -21,6 +21,7 @@ import AddItems from "../components/pages/Dashboard/Admin/AddItems/AddItems";
 import ManageItems from "../components/pages/Dashboard/Admin/ManageItems/ManageItems";
 import ManageBookings from "../components/pages/Dashboard/Admin/ManageBookings/ManageBookings";
 import AllUsers from "../components/pages/Dashboard/Admin/AllUsers/AllUsers";
+import AdminRoute from "../components/UserAccessOnly/AdminRoute";
 // import EntryLogin from "../components/EntryPage/EntryLogin";
 // import Spinner from "../components/Spinner/Spinner";
 
@@ -97,23 +98,23 @@ const router = createBrowserRouter([
             // Admin route
             {
                 path: 'admin-home',
-                element: <AdminHome />
+                element: <AdminRoute><AdminHome /></AdminRoute>
             },
             {
                 path: 'add-items',
-                element: <AddItems />
+                element: <AdminRoute><AddItems /></AdminRoute>
             },
             {
                 path: 'manage-items',
-                element: <ManageItems />
+                element: <AdminRoute><ManageItems /></AdminRoute>
             },
             {
                 path: 'manage-bookings',
-                element: <ManageBookings />
+                element: <AdminRoute><ManageBookings /></AdminRoute>
             },
             {
                 path: 'users',
-                element: <AllUsers />
+                element: <AdminRoute><AllUsers /></AdminRoute>
             }
         ]
     },

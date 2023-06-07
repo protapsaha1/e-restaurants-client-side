@@ -4,7 +4,7 @@ import useMenu from "../../../CustomHook/useMenu/useMenu";
 
 const Offers = () => {
     const [menu] = useMenu(); 
-    const offers = menu.filter(item => item.category === 'offered');
+    const offers = menu.filter(item => item.category === 'Offered');
     return (
         <div>
             <SectionHeading

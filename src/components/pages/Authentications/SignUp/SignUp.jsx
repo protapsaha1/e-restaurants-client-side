@@ -23,8 +23,8 @@ const SignUp = () => {
         const photo = form.photo.value;
         const usersData = { name: name, email: email, UserPhoto: photo }
         console.log(password, email, name, photo)
-
-        if (password.length >= 6 || password.length <= 20) {
+        // || password.length === 20
+        if (password.length === 6) {
             setError("please your password max 20 or min 6 character")
         }
 
@@ -50,6 +50,7 @@ const SignUp = () => {
                                     form.reset();
                                     Swal.fire({
                                         icon: 'success',
+                                        showConfirmButton: false,
                                         title: 'Sign up Successfully'
                                     })
 

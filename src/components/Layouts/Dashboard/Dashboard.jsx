@@ -7,9 +7,7 @@ import useCart from "../../CustomHook/useCart/useCart";
 
 const DashBoard = () => {
     // TODO
-    // const isAdmin = true;
     const { isAdmin } = useAdmin();
-    console.log(isAdmin)
     const { cart } = useCart();
 
     return (
