@@ -5,8 +5,8 @@ import useMenu from "../../../CustomHook/useMenu/useMenu";
 import { Link } from "react-router-dom";
 
 const Desserts = () => {
-    const [menu] = useMenu();
-    const desserts = menu.filter(item => item.category === 'Dessert');
+    const { menu } = useMenu();
+    const desserts = menu?.filter(item => item.category === 'Dessert');
     return (
         <div>
             <BannerSec
@@ -16,7 +16,7 @@ const Desserts = () => {
             />
             <div className="py-10 w-[1320px] mx-auto">
                 <div className="grid md:grid-cols-2 gap-3">
-                    {
+                    {desserts &&
                         desserts.map(item => <PopularItems
                             key={item._id}
                             item={item}

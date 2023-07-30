@@ -3,8 +3,8 @@ import PopularItems from "../../Home/PopularItems/PopularItems";
 import useMenu from "../../../CustomHook/useMenu/useMenu";
 
 const Offers = () => {
-    const [menu] = useMenu(); 
-    const offers = menu.filter(item => item.category === 'Offered');
+    const { menu } = useMenu();
+    const offers = menu?.filter(item => item.category === 'Offered');
     return (
         <div>
             <SectionHeading
@@ -13,7 +13,7 @@ const Offers = () => {
             />
             <div className="py-10">
                 <div className="grid md:grid-cols-2 gap-3">
-                    {
+                    {offers &&
                         offers.map(item => <PopularItems
                             key={item._id}
                             item={item}

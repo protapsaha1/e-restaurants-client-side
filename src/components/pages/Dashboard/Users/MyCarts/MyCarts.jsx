@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const MyCarts = () => {
     const { cart, refetch } = useCart();
-    const total = cart.reduce((sum, item) => parseInt(item.price) + sum, 0);
+    const total = cart?.reduce((sum, item) => parseInt(item?.price) + sum, 0);
     const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -48,7 +48,7 @@ const MyCarts = () => {
                     heading={"Wanna add more"}
                 />
             </div>
-            <div className=" w-[1800px] h-[975px] mx-auto bg-[#ffffff] p-36" >
+            <div className=" w-[1800px] h-fit mx-auto bg-[#ffffff] p-36" >
                 <div className="pb-10 flex justify-between items-center">
                     <h3 className="text-4xl font-bold font-serif">Total Items: {cart.length}</h3>
                     <h3 className="text-4xl font-bold font-serif">Total Price: {Math.round(total)}</h3>
@@ -56,27 +56,26 @@ const MyCarts = () => {
                         pay
                     </button>
                 </div>
-                <div className="overflow-x-auto pt-10 w-[1400] pb-10">
-                    <table className="table w-full">
+                <div className="overflow-x-auto pt-10 w-[1600] pb-10">
+                    <table className="table w-full bg-white">
                         {/* head */}
-                        <thead className="bg-orange-600 px-3">
+                        <thead className="px-3">
                             <tr>
-                                <th></th>
+                                <th className="text-2xl font-serif font-bold ">#</th>
                                 <th className="text-2xl font-serif font-bold">Item Image</th>
                                 <th className="text-2xl font-serif font-bold">Item Name</th>
                                 <th className="text-2xl font-serif font-bold">Item Price</th>
                                 <th className="text-2xl font-serif font-bold">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="bg-white">
                             {/* row 1 */}
-                            {
-
+                            {cart &&
                                 cart.map((item, index) => <tr
                                     key={item._id}
                                 >
                                     <td>
-                                        <p className="text-xl">{index + 1}</p>
+                                        <p className="text-2xl">{index + 1}</p>
                                     </td>
                                     <td>
                                         <div className="flex items-center space-x-3">
@@ -96,10 +95,7 @@ const MyCarts = () => {
                                             <FaTrashAlt className="w-8 h-8 text-white" />
                                         </button>
                                     </th>
-
                                 </tr>)
-
-
                             }
                         </tbody>
                     </table>

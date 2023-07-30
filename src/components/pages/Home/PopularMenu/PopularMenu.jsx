@@ -5,8 +5,8 @@ import PopularItems from "../PopularItems/PopularItems";
 
 
 const PopularMenu = () => {
-    const [menu] = useMenu();
-    const popular = menu.filter(item => item.category === 'popular');
+    const { menu } = useMenu();
+    const popular = menu?.filter(item => item.category === 'Popular');
     return (
         <section>
             <div className="text-center">
@@ -16,7 +16,7 @@ const PopularMenu = () => {
                 />
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-                {
+                {popular &&
                     popular.map(item => <PopularItems
                         key={item._id}
                         item={item}

@@ -1,12 +1,12 @@
 // import { useEffect } from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 
 
 // const useUser = (name, email, photoURL) => {
-//     const location = useLocation();
+//     // const location = useLocation();useLocation,
 //     const navigate = useNavigate();
-//     const from = location.state?.from?.pathname || '/';
+//     // const from = location.state?.from?.pathname || '/';
 
 //     const usersData = { name: name, email: email, UserPhoto: photoURL }
 //     useEffect(() => {
@@ -26,11 +26,12 @@
 //                         title: 'Login with Google Successfully',
 //                         timer: 1500
 //                     })
-//                     navigate(from, { replace: true })
+//                     // navigate(from, { replace: true })
 
 //                 }
 //             })
-//     }, [navigate, usersData, from])
+//     }, [navigate, usersData])
 // };
 
 // export default useUser;
+

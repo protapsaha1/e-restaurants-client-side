@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { Rating } from "@smastrom/react-rating";
-import '@smastrom/react-rating/style.css'
+import '@smastrom/react-rating/style.css';
 import { BsEarbuds } from "react-icons/bs";
 
 const Testimonials = () => {

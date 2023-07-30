@@ -5,8 +5,8 @@ import PopularItems from "../../Home/PopularItems/PopularItems";
 import { Link } from "react-router-dom";
 
 const Drinks = () => {
-    const [menu] = useMenu();
-    const drinks = menu.filter(item => item.category === 'Drinks');
+    const { menu } = useMenu();
+    const drinks = menu?.filter(item => item.category === 'Drinks');
     return (
         <div>
             <BannerSec
@@ -16,7 +16,7 @@ const Drinks = () => {
             />
             <div className="py-10 w-[1320px] mx-auto">
                 <div className="grid md:grid-cols-2 gap-3">
-                    {
+                    {drinks &&
                         drinks.map(item => <PopularItems
                             key={item._id}
                             item={item}
